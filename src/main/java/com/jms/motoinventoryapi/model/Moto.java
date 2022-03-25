@@ -57,7 +57,7 @@ public class Moto {
         return invCount;
     }
 
-    public void setInvConunt(int invConunt) {
-        this.invCount = invConunt;
+    public void setInvCount(int invCount) {
+        this.invCount = invCount;
     }
 }
