@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//@CrossOrigin // may need?
+@CrossOrigin
 @RestController
 @RequestMapping("/motorbikes")
 public class motoController {
