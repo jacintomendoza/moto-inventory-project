@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MotoService } from '../moto.service';
 import { Moto } from '../moto.model';
 
@@ -9,6 +9,10 @@ import { Moto } from '../moto.model';
 })
 export class MotosComponent implements OnInit {
   motos: Moto[] = [];
+  selectedValue = 'Please select';
+  values = ['Make', 'VIN', 'Type'];
+  searchTerm = "";
+  // @Input() 
 
   constructor(private motoService: MotoService) { }
 
@@ -16,6 +20,15 @@ export class MotosComponent implements OnInit {
     this.motoService.getMotos().subscribe((motos) => {
       this.motos = motos;
     })
+  }
+
+  test(valuetest: string) {
+    console.log("this is a test!" + valuetest);
+    
+  }
+
+  selectValue(selection: string){
+    this.selectedValue = selection;
   }
 
   searchVin(searchTerm: string) {
