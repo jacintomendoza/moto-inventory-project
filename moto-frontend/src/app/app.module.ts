@@ -8,6 +8,7 @@ import { DashComponent } from './dash/dash.component';
 import { MotosComponent } from './motos/motos.component';
 import { AddMotoComponent } from './add-moto/add-moto.component';
 import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
