@@ -1,0 +1,38 @@
+<p>Todo: Make it not case sensitive</p>
+<div class="search">
+  <input [(ngModel)]="searchTerm" type="text" placeholder="Filter by..."/>
+
+  <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{selectedValue}}</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <div *ngFor="let value of values">
+            <button ngbDropdownItem (click)="selectValue(value)">{{value}}</button>
+          </div>
+        </div>
+
+      <button (click)="search()">Search</button>
+  </div>
+</div>
+
+<div>
+    <table class="table table-striped">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">ID</th>
+                <th scope="col">VIN</th>
+                <th scope="col">Make</th>
+                <th scope="col">Type</th>
+                <th scope="col">Stock</th>
+            </tr>
+            <tbody>
+                <tr *ngFor="let moto of motos; index as i">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{moto.id}}</td>
+                    <td>{{moto.vin}}</td>
+                    <td>{{moto.make}}</td>
+                    <td>{{moto.type}}</td>
+                    <td>{{moto.invCount}}</td>
+                </tr>
+            </tbody>
+    </table>
+</div>

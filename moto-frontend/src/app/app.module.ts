@@ -9,13 +9,15 @@ import { MotosComponent } from './motos/motos.component';
 import { AddMotoComponent } from './add-moto/add-moto.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashComponent,
     MotosComponent,
-    AddMotoComponent
+    AddMotoComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

@@ -18,15 +18,15 @@ private apiUrl = "https://moto-inventory-database.herokuapp.com/motorbikes";
   // SEARCH FUNCTIONS ///////////////////////////////////////////
 
   searchMake(searchTerm: string): Observable<Moto[]>{
-    return this.http.get<Moto[]>(`${this.apiUrl}/make/searchTerm`);
+    return this.http.get<Moto[]>(`${this.apiUrl}/make/${searchTerm}`);
   }
 
   searchVin(searchTerm: string): Observable<Moto[]>{
-    return this.http.get<Moto[]>(`${this.apiUrl}/vin/searchTerm`);
+    return this.http.get<Moto[]>(`${this.apiUrl}/vin/${searchTerm}`);
   }
 
   searchType(searchTerm: string): Observable<Moto[]>{
-    return this.http.get<Moto[]>(`${this.apiUrl}/type/searchTerm`);
+    return this.http.get<Moto[]>(`${this.apiUrl}/type/${searchTerm}`);
   }
 
   ////////////////////////////////////////////////////////////////
