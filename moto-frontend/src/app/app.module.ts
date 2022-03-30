@@ -10,6 +10,9 @@ import { AddMotoComponent } from './add-moto/add-moto.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchComponent } from './search/search.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,14 +20,17 @@ import { SearchComponent } from './search/search.component';
     DashComponent,
     MotosComponent,
     AddMotoComponent,
-    SearchComponent
+    SearchComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    MDBBootstrapModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

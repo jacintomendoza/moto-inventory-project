@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MotoService } from '../moto.service';
 import { Moto } from '../moto.model';
+import { Validators, FormControl, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -9,18 +10,24 @@ import { Moto } from '../moto.model';
 })
 export class SearchComponent implements OnInit {
   motos: Moto[] = [];
-  selectedValue = 'Please select';
+  selectedValue = 'Filter by...';
   values = ['Make', 'VIN', 'Type'];
   searchTerm = "";
   choosenValue = "";
+  validationForm: FormGroup;
 
-  constructor(private motoService: MotoService) { }
+  constructor(private motoService: MotoService, public fb: FormBuilder) {
+    this.validationForm = fb.group({
+      searchFormEx: [null, Validators.required],
+  });}
 
   ngOnInit(): void {
     this.motoService.getMotos().subscribe((motos) => {
       this.motos = motos;
     })
   }
+
+  get searchFormEx() { return this.validationForm.get('searchFormEx');}
 
   search() {
     switch(this.selectedValue) {
@@ -45,21 +52,19 @@ export class SearchComponent implements OnInit {
   }
 
   searchMake() {
-    this.motoService.searchMake(this.searchTerm).subscribe(payload => {
+    this.motoService.searchMake(this.validationForm.value.searchFormEx).subscribe(payload => {
       this.motos = payload;
-      // console.log(this.searchTerm)
-      console.log(payload);
     })
   }
 
   searchVin() {
-    this.motoService.searchVin(this.searchTerm).subscribe(payload => {
+    this.motoService.searchVin(this.validationForm.value.searchFormEx).subscribe(payload => {
       this.motos = payload;
     })
   }
 
   searchType() {
-    this.motoService.searchType(this.searchTerm).subscribe(payload => {
+    this.motoService.searchType(this.validationForm.value.searchFormEx).subscribe(payload => {
       this.motos = payload;
     })
   }
