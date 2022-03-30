@@ -19,7 +19,7 @@
       <button type="button" class="btn btn-primary" (click)="search()">Search</button>
   </div>
   
-<div>
+<div class="table-container">
     <table class="table table-striped">
             <tr>
                 <th scope="col">#</th>
@@ -30,7 +30,8 @@
                 <th scope="col">Stock</th>
             </tr>
             <tbody>
-                <tr *ngFor="let moto of motos; index as i">
+            
+                <tr *ngFor="let moto of motos; index as i" data-aos="fade-up">
                     <th scope="row">{{ i + 1 }}</th>
                     <td>{{moto.id}}</td>
                     <td>{{moto.vin}}</td>
@@ -40,4 +41,7 @@
                 </tr>
             </tbody>
     </table>
+    <div class="spinner-border text-primary" role="status" *ngIf="isLoadingBikes">
+      <span class="visually-hidden">Loading...</span>
+    </div>
 </div>

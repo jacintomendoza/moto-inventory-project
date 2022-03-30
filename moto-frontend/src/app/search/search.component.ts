@@ -15,6 +15,7 @@ export class SearchComponent implements OnInit {
   searchTerm = "";
   choosenValue = "";
   validationForm: FormGroup;
+  isLoadingBikes: boolean = false;
 
   constructor(private motoService: MotoService, public fb: FormBuilder) {
     this.validationForm = fb.group({
@@ -52,20 +53,26 @@ export class SearchComponent implements OnInit {
   }
 
   searchMake() {
+    this.isLoadingBikes = true;
     this.motoService.searchMake(this.validationForm.value.searchFormEx).subscribe(payload => {
       this.motos = payload;
+      this.isLoadingBikes = false;
     })
   }
 
   searchVin() {
+    this.isLoadingBikes = true;
     this.motoService.searchVin(this.validationForm.value.searchFormEx).subscribe(payload => {
       this.motos = payload;
+      this.isLoadingBikes = false;
     })
   }
 
   searchType() {
+    this.isLoadingBikes = true;
     this.motoService.searchType(this.validationForm.value.searchFormEx).subscribe(payload => {
       this.motos = payload;
+      this.isLoadingBikes = false;
     })
   }
 
