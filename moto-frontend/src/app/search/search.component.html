@@ -1,6 +1,12 @@
-<p>Todo: Make it not case sensitive</p>
 <div class="search">
-  <input [(ngModel)]="searchTerm" type="text" placeholder="Filter by..."/>
+  <form [formGroup]="validationForm">
+    <!-- [(ngModel)]="searchTerm" -->
+    <div class="md-form">
+      <input mdbInput type="text" formControlName="searchFormEx" id="form1" class="form-control">
+      <label for="form1" class="">Keywords</label>
+      <mdb-error *ngIf="searchFormEx && searchFormEx.invalid && (searchFormEx.dirty || searchFormEx.touched)">Cannot be Empty!</mdb-error>
+    </div>
+  </form>
 
   <div ngbDropdown class="d-inline-block">
       <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{selectedValue}}</button>
@@ -9,12 +15,11 @@
             <button ngbDropdownItem (click)="selectValue(value)">{{value}}</button>
           </div>
         </div>
-
-      <button (click)="search()">Search</button>
+      </div>
+      <button type="button" class="btn btn-primary" (click)="search()">Search</button>
   </div>
-</div>
-
-<div>
+  
+<div class="table-container">
     <table class="table table-striped">
             <tr>
                 <th scope="col">#</th>
@@ -25,7 +30,8 @@
                 <th scope="col">Stock</th>
             </tr>
             <tbody>
-                <tr *ngFor="let moto of motos; index as i">
+            
+                <tr *ngFor="let moto of motos; index as i" data-aos="fade-up">
                     <th scope="row">{{ i + 1 }}</th>
                     <td>{{moto.id}}</td>
                     <td>{{moto.vin}}</td>
@@ -35,4 +41,7 @@
                 </tr>
             </tbody>
     </table>
+    <div class="spinner-border text-primary" role="status" *ngIf="isLoadingBikes">
+      <span class="visually-hidden">Loading...</span>
+    </div>
 </div>
