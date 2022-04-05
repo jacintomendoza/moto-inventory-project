@@ -10,6 +10,7 @@ export class AddMotoComponent implements OnInit {
 make: string  = '';
 model: string = '';
 vin: string = '';
+stock: number 
 
   constructor() { }
 
