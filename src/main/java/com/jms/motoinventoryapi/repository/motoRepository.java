@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 
 public interface motoRepository extends MongoRepository <Moto, String>{
-    List<Moto> findByMake(String make);
-    List<Moto> findByVin(String vin);
-    List<Moto> findByType(String type);
+    List<Moto> findByMakeContainingIgnoreCase(String make);
+    List<Moto> findByVinContainingIgnoreCase(String vin);
+    List<Moto> findByTypeContainingIgnoreCase(String type);
 }
