@@ -13,6 +13,7 @@ import { SearchComponent } from './search/search.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ReactiveFormsModule } from '@angular/forms';
+import { IntroComponent } from './intro/intro.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MotosComponent,
     AddMotoComponent,
     SearchComponent,
-    NavbarComponent
+    NavbarComponent,
+    IntroComponent
   ],
   imports: [
     BrowserModule,

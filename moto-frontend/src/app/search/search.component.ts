@@ -16,6 +16,7 @@ export class SearchComponent implements OnInit {
   choosenValue = "";
   validationForm: FormGroup;
   isLoadingBikes: boolean = false;
+  activeReset: boolean = false;
 
   constructor(private motoService: MotoService, public fb: FormBuilder) {
     this.validationForm = fb.group({
@@ -23,8 +24,10 @@ export class SearchComponent implements OnInit {
   });}
 
   ngOnInit(): void {
+    this.isLoadingBikes = true;
     this.motoService.getMotos().subscribe((motos) => {
       this.motos = motos;
+      this.isLoadingBikes = false;
     })
   }
 
@@ -47,6 +50,15 @@ export class SearchComponent implements OnInit {
     }
   }
 
+  reload() {
+    this.isLoadingBikes = true;
+    this.motoService.getMotos().subscribe((motos) => {
+      this.motos = motos;
+      this.isLoadingBikes = false;
+      this.activeReset = false;
+    })
+  }
+
   selectValue(selection: string){
     this.selectedValue = selection;
     this.choosenValue = selection;
@@ -57,6 +69,7 @@ export class SearchComponent implements OnInit {
     this.motoService.searchMake(this.validationForm.value.searchFormEx).subscribe(payload => {
       this.motos = payload;
       this.isLoadingBikes = false;
+      this.activeReset = true;
     })
   }
 
@@ -65,6 +78,7 @@ export class SearchComponent implements OnInit {
     this.motoService.searchVin(this.validationForm.value.searchFormEx).subscribe(payload => {
       this.motos = payload;
       this.isLoadingBikes = false;
+      this.activeReset = true;
     })
   }
 
@@ -73,6 +87,7 @@ export class SearchComponent implements OnInit {
     this.motoService.searchType(this.validationForm.value.searchFormEx).subscribe(payload => {
       this.motos = payload;
       this.isLoadingBikes = false;
+      this.activeReset = true;
     })
   }
 

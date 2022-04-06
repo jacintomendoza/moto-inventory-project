@@ -1,47 +1,49 @@
-<div class="search">
-  <form [formGroup]="validationForm">
-    <!-- [(ngModel)]="searchTerm" -->
-    <div class="md-form">
-      <input mdbInput type="text" formControlName="searchFormEx" id="form1" class="form-control">
-      <label for="form1" class="">Keywords</label>
-      <mdb-error *ngIf="searchFormEx && searchFormEx.invalid && (searchFormEx.dirty || searchFormEx.touched)">Cannot be Empty!</mdb-error>
-    </div>
-  </form>
+<section class="search-container" id="search">
+  <div class="search">
+    <form [formGroup]="validationForm">
+      <!-- [(ngModel)]="searchTerm" -->
+      <div class="md-form">
+        <input mdbInput type="text" formControlName="searchFormEx" id="form1" class="form-control">
+        <label for="form1" class="">Keywords</label>
+        <mdb-error *ngIf="searchFormEx && searchFormEx.invalid && (searchFormEx.dirty || searchFormEx.touched)">Cannot be Empty!</mdb-error>
+      </div>
+    </form>
 
-  <div ngbDropdown class="d-inline-block">
-      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{selectedValue}}</button>
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <div *ngFor="let value of values">
-            <button ngbDropdownItem (click)="selectValue(value)">{{value}}</button>
+    <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{selectedValue}}</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <div *ngFor="let value of values">
+              <button ngbDropdownItem (click)="selectValue(value)">{{value}}</button>
+            </div>
           </div>
         </div>
-      </div>
-      <button type="button" class="btn btn-primary" (click)="search()">Search</button>
-  </div>
-  
-<div class="table-container">
-    <table class="table table-striped">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">ID</th>
-                <th scope="col">VIN</th>
-                <th scope="col">Make</th>
-                <th scope="col">Type</th>
-                <th scope="col">Stock</th>
-            </tr>
-            <tbody>
-            
-                <tr *ngFor="let moto of motos; index as i" data-aos="fade-up">
-                    <th scope="row">{{ i + 1 }}</th>
-                    <td>{{moto.id}}</td>
-                    <td>{{moto.vin}}</td>
-                    <td>{{moto.make}}</td>
-                    <td>{{moto.type}}</td>
-                    <td>{{moto.invCount}}</td>
-                </tr>
-            </tbody>
-    </table>
-    <div class="spinner-border text-primary" role="status" *ngIf="isLoadingBikes">
-      <span class="visually-hidden">Loading...</span>
+        <button type="button" class="btn btn-primary" (click)="search()">Search</button>
+        <button type="button" class="btn btn-danger reload" (click)="reload()" *ngIf="activeReset">Reset Results</button>
     </div>
-</div>
+  <div class="table-container">
+      <table class="table table-striped">
+              <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">ID</th>
+                  <th scope="col">VIN</th>
+                  <th scope="col">Make</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Stock</th>
+              </tr>
+              <tbody>
+              
+                  <tr *ngFor="let moto of motos; index as i" data-aos="fade-up">
+                      <th scope="row">{{ i + 1 }}</th>
+                      <td>{{moto.id}}</td>
+                      <td>{{moto.vin}}</td>
+                      <td>{{moto.make}}</td>
+                      <td>{{moto.type}}</td>
+                      <td>{{moto.invCount}}</td>
+                  </tr>
+              </tbody>
+      </table>
+      <div class="spinner-border text-primary" role="status" *ngIf="isLoadingBikes">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+  </div>
+</section>
