@@ -34,30 +34,16 @@
     text-align: center;
     animation: arrow-pulse .8s infinite ease-in-out;
     transition: color 0.5s ease;
-    // cursor: pointer;
+    text-decoration: none;
+    animation-timing-function: linear;
 }
 
 .arrow:hover {
-    color: rgb(175, 175, 255);
+    color: #77a9fa;
 }
 
 @keyframes arrow-pulse {
-    // 0% {
-    //   transform: scale(1);
-    // }
-    // 50% {
-    //   transform: scale(1.1);
-    // }
-    // 70% {
-    //   transform: scale(1.1);
-    // }
-    // 100% {
-    //   transform: scale(1);
-    // }
-    from {
-        transform: translateY(0%);
-    }
-    to {
-        transform: translateY(5%);
-    }
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-.5vh); }
+    100% { transform: translateY(0); }
   }

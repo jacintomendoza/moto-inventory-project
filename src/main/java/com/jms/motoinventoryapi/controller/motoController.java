@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.repository.Query;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,20 +27,19 @@ public class motoController {
 
     // GET SEARCH/FILTERED ///////////////////
 
-
     @GetMapping("/make/{make}")
     public List<Moto> getMake(@PathVariable String make){
-        return motoRepo.findByMake(make);
+        return motoRepo.findByMakeContainingIgnoreCase(make);
     }
 
     @GetMapping("/vin/{vin}")
     public List<Moto> getVin(@PathVariable String vin){
-        return motoRepo.findByVin(vin);
+        return motoRepo.findByVinContainingIgnoreCase(vin);
     }
 
     @GetMapping("/type/{type}")
     public List<Moto> getType(@PathVariable String type){
-        return motoRepo.findByType(type);
+        return motoRepo.findByTypeContainingIgnoreCase(type);
     }
 
     // STANDARD CRUD ///////////////////
@@ -55,7 +52,6 @@ public class motoController {
     @GetMapping()
     public List<Moto> getMotos() { return motoRepo.findAll();}
 
-//    @PutMapping(value = "/motorbike/{id}")
     @PutMapping("/{id}")
     public void updateMoto(@PathVariable String id, @RequestBody Moto moto){
         Moto updatedMoto = motoRepo.findById(id).get();
