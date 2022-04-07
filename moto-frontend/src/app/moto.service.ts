@@ -19,6 +19,11 @@ private apiUrl = "https://moto-inventory-database.herokuapp.com/motorbikes";
     return this.http.post<Moto[]>(`${this.apiUrl}/newbike`, newMoto)
   }
 
+  deleteMoto(moto: Moto): Observable<Moto> {
+    const url = `${this.apiUrl}/${moto.id}`
+    return this.http.delete<Moto>(url)
+  }
+
   // SEARCH FUNCTIONS ///////////////////////////////////////////
 
   searchMake(searchTerm: string): Observable<Moto[]>{

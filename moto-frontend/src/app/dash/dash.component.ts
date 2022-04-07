@@ -10,6 +10,8 @@ import { Moto } from '../moto.model';
 export class DashComponent implements OnInit {
   motos: Moto[] = [];
 
+
+
   constructor(private motoService: MotoService) { }
 
   ngOnInit(): void {
@@ -25,9 +27,14 @@ export class DashComponent implements OnInit {
   }
 
   addNewMoto(newMoto: Moto) {
-    this.motoService.addMoto(newMoto).subscribe(moto => {
-      // this.motos.push(moto)
+    this.motoService.addMoto(newMoto).subscribe(payload => {
+      this.motos.push(payload)
     })
+  }
+
+  deleteMoto(moto: Moto) {
+    this.motoService.deleteMoto(moto)
+    .subscribe(() => this.motos = this.motos.filter((t) => t.id !== moto.id))
   }
 
 }

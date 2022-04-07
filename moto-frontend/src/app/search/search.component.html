@@ -24,7 +24,7 @@
       <table class="table table-striped">
               <tr>
                   <th scope="col">#</th>
-                  <th scope="col">ID</th>
+                  <!-- <th scope="col">ID</th> -->
                   <th scope="col">VIN</th>
                   <th scope="col">Make</th>
                   <th scope="col">Type</th>
@@ -34,11 +34,12 @@
               
                   <tr *ngFor="let moto of motos; index as i" data-aos="fade-up">
                       <th scope="row">{{ i + 1 }}</th>
-                      <td>{{moto.id}}</td>
+                      <!-- <td>{{moto.id}}</td> -->
                       <td>{{moto.vin}}</td>
                       <td>{{moto.make}}</td>
                       <td>{{moto.type}}</td>
                       <td>{{moto.invCount}}</td>
+                      <button (click)="onDelete(moto)">x</button>
                   </tr>
               </tbody>
       </table>

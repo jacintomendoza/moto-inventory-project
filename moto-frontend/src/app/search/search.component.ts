@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MotoService } from '../moto.service';
 import { Moto } from '../moto.model';
 import { Validators, FormControl, FormBuilder, FormGroup } from '@angular/forms';
@@ -9,6 +9,7 @@ import { Validators, FormControl, FormBuilder, FormGroup } from '@angular/forms'
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+  @Output() onDeleteMoto : EventEmitter<Moto> = new EventEmitter();
   motos: Moto[] = [];
   selectedValue = 'Filter by...';
   values = ['Make', 'VIN', 'Type'];
@@ -17,6 +18,7 @@ export class SearchComponent implements OnInit {
   validationForm: FormGroup;
   isLoadingBikes: boolean = false;
   activeReset: boolean = false;
+
 
   constructor(private motoService: MotoService, public fb: FormBuilder) {
     this.validationForm = fb.group({
@@ -89,6 +91,10 @@ export class SearchComponent implements OnInit {
       this.isLoadingBikes = false;
       this.activeReset = true;
     })
+  }
+
+  onDelete(moto: Moto) {
+    this.onDeleteMoto.emit(moto)
   }
 
 }
