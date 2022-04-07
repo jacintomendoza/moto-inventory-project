@@ -4,5 +4,5 @@ export interface Moto {
     vin: string;
     type: string;
     invCount?: number;
-    inStock?:boolean
+    inStock?:boolean;
 }

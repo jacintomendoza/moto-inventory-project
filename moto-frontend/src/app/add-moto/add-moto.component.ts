@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, } from '@angular/core';
 import { Moto } from '../moto.model';
 
 @Component({
@@ -7,10 +7,12 @@ import { Moto } from '../moto.model';
   styleUrls: ['./add-moto.component.scss']
 })
 export class AddMotoComponent implements OnInit {
-make: string  = '';
-model: string = '';
-vin: string = '';
-stock: number 
+  @Output() addNewBike: EventEmitter<Moto> = new EventEmitter();
+
+make: string  
+type: string 
+vin: string 
+stock: number
 
   constructor() { }
 
@@ -18,7 +20,23 @@ stock: number
   }
 
   onSubmit() {
-    console.log('clicked!')
+    
+    const newMoto: Moto = {
+      make: this.make,
+      type: this.type,
+      vin: this.vin,
+      invCount: this.stock
+    }
+    
+  this.addNewBike.emit(newMoto);
+
+  console.log(newMoto)
+
+  // this.make = '';
+  // this.type = '';
+  // this.vin = '';
+  
+    
   }
 
 }
