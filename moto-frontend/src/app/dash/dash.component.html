@@ -1,19 +1,7 @@
 <app-navbar></app-navbar>
 <app-intro></app-intro>
 <app-search id="search"></app-search>
-<app-add-moto></app-add-moto>
-
-
-
-<!-- <input>
-<button>Search</button>
-<div>
-    <h2>information display</h2>
-    <p *ngFor="let moto of motos">{{moto.make}}</p>
-</div> -->
-
-
-
+<app-add-moto (addNewBike)="addNewMoto($event)"></app-add-moto>
 
 <!-- 
     Add a motorcycle to inventory

@@ -15,6 +15,10 @@ private apiUrl = "https://moto-inventory-database.herokuapp.com/motorbikes";
     return this.http.get<Moto[]>(this.apiUrl);
   }
 
+  addMoto(newMoto: Moto): Observable<Moto[]> {
+    return this.http.post<Moto[]>(`${this.apiUrl}/newbike`, newMoto)
+  }
+
   // SEARCH FUNCTIONS ///////////////////////////////////////////
 
   searchMake(searchTerm: string): Observable<Moto[]>{
