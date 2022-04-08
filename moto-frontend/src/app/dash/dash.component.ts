@@ -28,7 +28,7 @@ export class DashComponent implements OnInit {
 
   addNewMoto(newMoto: Moto) {
     this.motoService.addMoto(newMoto).subscribe(payload => {
-      this.motos.push(payload)
+      // this.motos.push(payload)
     })
   }
 

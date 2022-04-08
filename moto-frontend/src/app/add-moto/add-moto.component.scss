@@ -1,0 +1,24 @@
+.add-form {
+    width: 50vw;
+    background-color: steelblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 1px 1px 1px 1px rgb(0, 0, 0);
+
+
+    .form {
+        // width: 50vw;
+
+        label {
+            color: rgb(255, 255, 255);
+            padding: 0 10px 0 0;
+            width: 50px;
+        }
+
+        input {
+            width: 30vw;
+        }
+    }
+}
+
