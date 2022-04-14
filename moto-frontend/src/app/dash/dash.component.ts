@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MotoService } from '../moto.service';
 import { Moto } from '../moto.model';
 
@@ -8,9 +8,7 @@ import { Moto } from '../moto.model';
   styleUrls: ['./dash.component.scss']
 })
 export class DashComponent implements OnInit {
-  motos: Moto[] = [];
-
-
+  motos: Moto[] = Array();
 
   constructor(private motoService: MotoService) { }
 
@@ -28,13 +26,16 @@ export class DashComponent implements OnInit {
 
   addNewMoto(newMoto: Moto) {
     this.motoService.addMoto(newMoto).subscribe(payload => {
-      // this.motos.push(payload)
-    })
+      // console.log("newMoto: " + newMoto);
+      // console.log("payload: " + payload);
+      this.motos.push(newMoto);
+    });
   }
 
   deleteMoto(moto: Moto) {
-    this.motoService.deleteMoto(moto)
-    .subscribe(() => this.motos = this.motos.filter((t) => t.id !== moto.id))
+    this.motoService.deleteMoto(moto).subscribe(() => {
+      this.motos = this.motos.filter((t) => t.id !== moto.id)
+    });
   }
 
 }

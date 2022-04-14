@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter, SimpleChange } from '@angular/core';
 import { MotoService } from '../moto.service';
 import { Moto } from '../moto.model';
 import { Validators, FormControl, FormBuilder, FormGroup } from '@angular/forms';
@@ -19,6 +19,7 @@ export class SearchComponent implements OnInit {
   isLoadingBikes: boolean = false;
   activeReset: boolean = false;
 
+  @Input() motos_updated : Moto[];
 
   constructor(private motoService: MotoService, public fb: FormBuilder) {
     this.validationForm = fb.group({
@@ -31,6 +32,10 @@ export class SearchComponent implements OnInit {
       this.motos = motos;
       this.isLoadingBikes = false;
     })
+  }
+
+  ngOnChanges(changes: SimpleChange) {
+    this.motos = this.motos_updated;
   }
 
   get searchFormEx() { return this.validationForm.get('searchFormEx');}

@@ -5,7 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashComponent } from './dash/dash.component';
-import { MotosComponent } from './motos/motos.component';
 import { AddMotoComponent } from './add-moto/add-moto.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -19,7 +18,6 @@ import { IntroComponent } from './intro/intro.component';
   declarations: [
     AppComponent,
     DashComponent,
-    MotosComponent,
     AddMotoComponent,
     SearchComponent,
     NavbarComponent,
